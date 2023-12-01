@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Simple Blog App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="img/Browsky.png" rel="icon" />
+    <link href="css/myStyle.css" type="text/css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body onload="showBlogFunc()">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="img/Dragonball-Goku.png" alt="Browsky" class="logo" />
+          <h4 class="text-white">Simple Blog App</h4></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="collapsibleNavbar"
+          style="flex-direction: row-reverse"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="addBlog.html">Write Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="selectCategory mb-4">
+            <ul>
+              <li onclick="sortBlog('Fashion')">Fashion</li>
+              <li onclick="sortBlog('Beauty')">Beauty</li>
+              <li onclick="sortBlog('Travel')">Travel</li>
+              <li onclick="sortBlog('Lifestyle')">Lifestyle</li>
+              <li onclick="sortBlog('Personal')">Personal</li>
+              <li onclick="sortBlog('Tech')">Tech</li>
+              <li onclick="sortBlog('Health')">Health</li>
+              <li onclick="sortBlog('Fitness')">Fitness</li>
+              <li onclick="sortBlog('Wellness')">Wellness</li>
+              <li onclick="sortBlog('Business')">Business</li>
+              <li onclick="sortBlog('Education')">Education</li>
+              <li onclick="sortBlog('Music')">Music</li>
+              <li onclick="sortBlog('Sports')">Sports</li>
+              <li onclick="sortBlog('Entertainment')">Entertainment</li>
+              <li onclick="sortBlog('Pets')">Pets</li>
+              <li onclick="sortBlog('Photography')">Photography</li>
+              <li onclick="sortBlog('Agriculture')">Agriculture</li>
+              <li onclick="sortBlog('Gaming')">Gaming</li>
+              <li onclick="sortBlog('History')">History</li>
+              <li onclick="sortBlog('News and current affairs')">
+                News and current affairs
+              </li>
+            </ul>
+          </div>
+
+          <div id="output"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+      <h5>Thanks for visiting!!!</h5>
+    </div>
+    <script>
+      function showBlogFunc() {
+        const blogOutput = document.getElementById("output");
+        let storeLength = localStorage.length;
+        for (let j = 0; j < storeLength; j++) {
+          const retrievedStore = JSON.parse(localStorage.getItem(j));
+          const blogDate = new Date(retrievedStore.date);
+
+          blogOutput.innerHTML +=
+            "<div class='card contentBar mb-3'id='" +
+            retrievedStore.id +
+            "'>" +
+            "<div class='card-header'>" +
+            retrievedStore.title +
+            "<span class='category'>" +
+            retrievedStore.cat +
+            "</span></div>" +
+            "<div class='card-body'>" +
+            retrievedStore.desc +
+            "</div>" +
+            "<div class='card-footer'>" +
+            blogDate +
+            "</div>" +
+            "</div>";
+        }
+      }
+
+      function sortBlog(x) {
+        const blogOutput = document.getElementById("output");
+        let storeLength = localStorage.length;
+        blogOutput.innerHTML = "";
+        for (let k = 0; k < storeLength; k++) {
+          const retrievedStore = JSON.parse(localStorage.getItem(k));
+          const blogDate = new Date(retrievedStore.date);
+          if (retrievedStore.cat === x) {
+            blogOutput.innerHTML +=
+              "<div class='card contentBar mb-3'id='" +
+              retrievedStore.id +
+              "'>" +
+              "<div class='card-header'>" +
+              retrievedStore.title +
+              "<span class='category'>" +
+              retrievedStore.cat +
+              "</span></div>" +
+              "<div class='card-body'>" +
+              retrievedStore.desc +
+              "</div>" +
+              "<div class='card-footer'>" +
+              blogDate +
+              "</div>" +
+              "</div>";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
