@@ -18,6 +18,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     grid-gap: 15px;
+    padding-left: 0px;
   }
   .selectCategory ul li {
     list-style-type: none;
@@ -34,20 +35,28 @@
   .card-footer {
     background-color: #fff !important;
   }
-  .card-header {
-    border-bottom: 1px solid #b89754 !important;
-  }
   .card-body,
   .card-footer {
     border: none !important;
   }
+  .card-header {
+    border-bottom: 1px solid #b89754 !important;
+    background-color: #b89754 !important;
+    color: #fff !important;
+    font-size: 1.4rem;
+  }
+  .card-footer {
+    background-color: #f2f2f2 !important;
+  }
+
   .category {
     float: right;
     background-color: #0d6efd;
     color: #fff;
     font-weight: bold;
     padding: 1%;
-    border-radius: 20px;
+    border: 3px solid #fff;
+    border-radius: 5px 20px;
     font-size: 12px;
   }
   
